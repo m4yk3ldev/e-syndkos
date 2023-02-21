@@ -1,4 +1,4 @@
-# e-syndkos
+# E-Syndkos
 
 
 ## Desafio a resolver:

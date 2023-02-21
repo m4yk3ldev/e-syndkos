@@ -6,7 +6,7 @@ from .models import Category, Product, Orders
 from .serializers import CategorySerializer, ProductSerializer, OrdersSerializer
 
 
-# Category Viewset
+# Category Viewsets
 class CategoryViewSet(viewsets.ModelViewSet):
     serializer_class = CategorySerializer
     queryset = Category.objects.filter(is_active__exact=True)
@@ -29,7 +29,7 @@ class CategoryViewSet(viewsets.ModelViewSet):
         return Response({"error": "Forbidden"}, status=status.HTTP_403_FORBIDDEN)
 
 
-# Product Viewset
+# Product Viewsets
 class ProductViewSet(viewsets.ModelViewSet):
     serializer_class = ProductSerializer
     queryset = Product.objects.all()
@@ -52,6 +52,7 @@ class ProductViewSet(viewsets.ModelViewSet):
         return Response({"error": "Forbidden"}, status=status.HTTP_403_FORBIDDEN)
 
 
+# Order ViewSets
 class OrdersViewSet(viewsets.ModelViewSet):
     serializer_class = OrdersSerializer
     permission_classes = [permissions.IsAuthenticated]

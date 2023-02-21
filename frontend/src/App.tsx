@@ -1,34 +1,31 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
+import { FC } from 'react'
 import './App.css'
+import HomePage from "./pages/Home";
+import { Routes, Route } from "react-router-dom";
+import ProductPage from "./pages/Product";
+import NavBar from "./components/NavBar/NavBar";
+import LoginPage from "./pages/Login";
+import Error404Page from "./pages/Error404";
+import { IS_DEVELOPMENT } from './config';
+import Footer from './components/Footer/Footer';
+import { CartProvider } from './context/cart';
+import { Cart } from './components/Cart/Cart';
 
-function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
-  )
+const App: FC = () => {
+    return (
+        <>
+            <CartProvider>
+                <NavBar />
+                <Routes>
+                    <Route path="/" element={<HomePage />} />
+                    <Route path="/product/:id" element={<ProductPage />} />
+                    <Route path="/login" element={<LoginPage />} />
+                    <Route path="*" element={<Error404Page />} />
+                </Routes>
+                {IS_DEVELOPMENT && <Footer />}
+            </CartProvider>
+        </>
+    )
 }
 
 export default App
