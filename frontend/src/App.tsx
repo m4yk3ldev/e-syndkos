@@ -9,7 +9,6 @@ import Error404Page from "./pages/Error404";
 import { IS_DEVELOPMENT } from './config';
 import Footer from './components/Footer/Footer';
 import { CartProvider } from './context/cart';
-import { Cart } from './components/Cart/Cart';
 
 const App: FC = () => {
     return (

@@ -6,7 +6,9 @@ export function useFilters() {
     const { filters, setFilters } = useContext(FiltersContext) as IFilter
 
     const filterProducts = (products: IProduct[]) => {
-        return products.filter(product => {
+        console.log(products)
+        if ( typeof products === "undefined" || products.length === 0) return []
+        return  products.filter(product => {
             return (
                 product.price >= filters.minPrice &&
                 (

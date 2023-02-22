@@ -2,6 +2,10 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 
 
+def product_directory_path_imagen(instance, filename):
+    return 'product/{0}.jpg'.format(instance.name, filename)
+
+
 class Category(models.Model):
     name = models.CharField(max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -30,18 +34,8 @@ class User(AbstractUser):
     state = models.CharField(max_length=200)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-
-    def is_client(self):
-        for group in self.groups.all():
-            if group.name == "Client":
-                return True
-        return False
-
-    def is_seller(self):
-        for group in self.groups.all():
-            if group.name == "Seller":
-                return True
-        return False
+    is_client = models.BooleanField(default=False)
+    is_seller = models.BooleanField(default=False)
 
     def toJSON(self):
         return {
@@ -67,6 +61,20 @@ class Product(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     seller = models.ForeignKey(User, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to=product_directory_path_imagen, verbose_name="Image Product")
+
+    def __str__(self):
+        return self.name
+
+    def get_seller(self):
+        return {
+            "name": self.seller.name
+        }
+
+    def get_category(self):
+        return {
+            "name": self.category.name
+        }
 
     def toJSON(self):
         return {
@@ -78,7 +86,6 @@ class Product(models.Model):
             "is_active": self.is_active,
             "created_at": self.created_at,
             "updated_at": self.updated_at,
-            "seller": self.seller.toJSON(),
         }
 
 

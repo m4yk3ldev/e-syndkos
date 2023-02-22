@@ -26,14 +26,14 @@ const ProductCard: FC<Props> = ({ product: productProps, isCart }) => {
                                 <CardMedia
                                     component="img"
                                     height="140"
-                                    image={product.images.at(0)}
-                                    alt={product.title}
+                                    image={product.image}
+                                    alt={product.name}
                                     loading="lazy"
                                 />
                             </Link>
                             <CardContent>
                                 <Typography gutterBottom variant="h5" component="div">
-                                    {product.title}
+                                    {product.name}
                                 </Typography>
                                 <Typography variant="body2" color="text.secondary" sx={{ maxHeight: 200, minHeight: 100 }}>
                                     {product.description}

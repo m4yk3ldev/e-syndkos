@@ -1,20 +1,24 @@
-export interface IResponseJsonProducts {
-    products: IProduct[]
-    total: number
-    skip: number
-    limit: number
-}
+export type IResponseGetProduct = IProduct[]
 
 export interface IProduct {
     id: number
-    title: string
+    name: string
     description: string
-    price: number
-    discountPercentage: number
-    rating: number
-    stock: number
-    brand: string
-    category: string
-    thumbnail: string
-    images: string[]
+    price: string
+    category: number
+    created_at: string
+    updated_at: string
+    is_active: boolean
+    image: string
+    get_seller: IGetSeller
+    get_category: IGetCategory
+    quantity: number
+}
+
+export interface IGetSeller {
+    name: string
+}
+
+export interface IGetCategory {
+    name: string
 }

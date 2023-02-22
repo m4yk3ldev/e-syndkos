@@ -10,6 +10,7 @@ import MoreIcon from '@mui/icons-material/MoreVert';
 import FavIcon from "./common/FavIcon/FavIcon";
 import Search from "./common/Search/Search";
 import Cart from "./common/Cart/Cart";
+import {Link} from 'react-router-dom';
 
 
 export default function PrimarySearchAppBar() {
@@ -54,8 +55,7 @@ export default function PrimarySearchAppBar() {
             open={isMenuOpen}
             onClose={handleMenuClose}
         >
-            <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-            <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+            <MenuItem onClick={handleMenuClose}><Link to={"/login"}>Acceder</Link></MenuItem>
         </Menu>
     );
 
@@ -76,31 +76,34 @@ export default function PrimarySearchAppBar() {
             open={isMobileMenuOpen}
             onClose={handleMobileMenuClose}
         >
-            <Cart />
+            <Cart/>
             <MenuItem onClick={handleProfileMenuOpen}>
-                <IconButton
-                    size="large"
-                    aria-label="account of current user"
-                    aria-controls="primary-search-account-menu"
-                    aria-haspopup="true"
-                    color="inherit"
-                >
-                    <AccountCircle />
-                </IconButton>
-                <p>Profile</p>
+                <Link to={"/login"}>
+                    <IconButton
+                        size="large"
+                        aria-label="account of current user"
+                        aria-controls="primary-search-account-menu"
+                        aria-haspopup="true"
+                        color="inherit"
+                    >
+                        <AccountCircle/>
+                    </IconButton>
+                    <p>Acceder</p>
+                </Link>
+
             </MenuItem>
         </Menu>
     );
 
     return (
-        <Box sx={{ flexGrow: 1 }}>
+        <Box sx={{flexGrow: 1}}>
             <AppBar position="static">
                 <Toolbar>
-                    <FavIcon />
+                    <FavIcon/>
                     {/* <Search/> */}
-                    <Box sx={{ flexGrow: 1 }} />
-                    <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-                        <Cart />
+                    <Box sx={{flexGrow: 1}}/>
+                    <Box sx={{display: {xs: 'none', md: 'flex'}}}>
+                        <Cart/>
                         <IconButton
                             size="large"
                             edge="end"
@@ -110,10 +113,10 @@ export default function PrimarySearchAppBar() {
                             onClick={handleProfileMenuOpen}
                             color="inherit"
                         >
-                            <AccountCircle />
+                            <AccountCircle/>
                         </IconButton>
                     </Box>
-                    <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
+                    <Box sx={{display: {xs: 'flex', md: 'none'}}}>
                         <IconButton
                             size="large"
                             aria-label="show more"
@@ -122,7 +125,7 @@ export default function PrimarySearchAppBar() {
                             onClick={handleMobileMenuOpen}
                             color="inherit"
                         >
-                            <MoreIcon />
+                            <MoreIcon/>
                         </IconButton>
                     </Box>
                 </Toolbar>

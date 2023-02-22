@@ -1,0 +1,29 @@
+.login {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
+  align-items: center;
+}
+.login_card {
+  width: 400px;
+  height: 400px;
+  margin: 20px;
+}
+
+.login_form {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.login_action {
+  display: flex;
+  flex-direction: row;
+  gap: 2px;
+  flex-wrap: nowrap;
+  align-content: center;
+  align-items: center;
+  justify-content: space-evenly;
+}

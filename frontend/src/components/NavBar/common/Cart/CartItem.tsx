@@ -17,15 +17,15 @@ const CartItem: FC<Props> = ({ product, addToCart, removeFromCart }) => {
                 <Link to={`/product/${product.id}`}>
                     <CardMedia
                         component="img"
-                        image={product.images.at(0)}
-                        alt={product.title}
+                        image={product.image}
+                        alt={product.name}
                         loading="lazy"
                         sx={{ height: "150px", width: "150px", objectFit: "scale-down" }}
                     />
                 </Link>
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
-                        {product.title}
+                        {product.name}
                     </Typography>
                     <Typography gutterBottom variant="h6" component="h6">
                         $ {product.price} X {product.quantity}
