@@ -70,6 +70,7 @@ Para fazer a API que usei:
 
 Para fazer a template que usei:
  * React
+ * React Router
  * Material UI
  * React Query
 
