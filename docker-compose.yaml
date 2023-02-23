@@ -1,0 +1,55 @@
+version: "3"
+
+services:
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_PASSWORD=es
+      - POSTGRES_USER=maykel
+      - POSTGRES_DB=es
+    volumes:
+      - /var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      network:
+        ipv4_address: 10.5.0.4
+
+  backend:
+    build: ./backend
+    volumes:
+      - ./backend:/app/backend
+    stdin_open: true
+    tty: true
+    command: sh -c "cd /app/backend && python3 manage.py migrate && python3 manage.py runserver 0.0.0.0:8000"
+    depends_on:
+      - db
+    ports:
+      - "8000:8000"
+    networks:
+      network:
+        ipv4_address: 10.5.0.5
+
+  frontend:
+    build: ./frontend
+    volumes:
+      - ./frontend:/app/frontend
+      - /app/frontend/node_modules
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+    depends_on:
+      - backend
+    command: npm run dev --host
+    networks:
+      network:
+        ipv4_address: 10.5.0.6
+
+networks:
+  network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.5.0.0/16
+          gateway: 10.5.0.1

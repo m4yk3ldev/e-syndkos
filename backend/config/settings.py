@@ -86,7 +86,7 @@ DATABASES = {
         'NAME': 'es',
         'USER': 'maykel',
         'PASSWORD': 'es',
-        'HOST': 'localhost',
+        'HOST': '10.5.0.4',
         'PORT': '5432',
     }
 }
@@ -130,6 +130,7 @@ REST_FRAMEWORK = {
 MEDIA_ROOT = os.path.join(os.path.join(BASE_DIR, 'media'))
 MEDIA_URL = '/media/'  # django-storages
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",
-    "http://127.0.0.1:5173",
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+    "http://10.5.0.6:3000",
 ]
