@@ -48,3 +48,31 @@ pedidos realizados
 ## Solucione
 <hr>
 
+### Para executar o projeto usando o Docker:
+
+```bash
+docker compose up -d
+```
+
+### Backend
+
+Para fazer a API que usei:
+* Django Rest Framework
+* Django Cors Headers
+* Django Rest Knox
+* Pillow
+* drf-yasg (Para documentação API)
+
+#### Documentação de API
+ [http://127.0.0.1:8000/redoc/](http://127.0.0.1:8000/redoc/)
+
+ ### FrontEnd
+
+Para fazer a template que usei:
+ * React
+ * Material UI
+ * React Query
+
+
+
+
